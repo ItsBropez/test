@@ -1,22 +1,24 @@
+'use strict';
 var http = require('http');
-var bittrex = require('node-bittrex-api')
+var bittrex = require('node-bittrex-api');
 var MongoClient = require('mongodb').MongoClient;
+var assert = require('assert');
 
 bittrex.options({
-  'apikey' : '0aafd35549524f89b442e21a1f01dc68',
-  'apisecret' : '320ce990f19d40ea932bd9f91f347a49',
+    'apikey' : '0aafd35549524f89b442e21a1f01dc68',
+    'apisecret' : '320ce990f19d40ea932bd9f91f347a49'
 });
 console.log('Bittrex Keys insterted');
 
 // Connect to the db
 MongoClient.connect("mongodb://localhost:27017/crypto", function (err, db) {
-   
-     if(err) throw err;
-	 console.log('Connected');
-     //Write databse Insert/Update/Query code here..
+    assert.equals(null, err);
+    console.log('Connected');
+    //Write databse Insert/Update/Query code here..
               
 });
 
-bittrex.getmarketsummary( { market : 'BTC-VTC'}, function( data, err ) {
-  console.log( data );
+bittrex.getmarketsummary({ market : 'BTC-VTC'}, function (data, err) {
+    console.log(data);
+    
 });
