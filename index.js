@@ -1,8 +1,8 @@
 var http = require('http');
-var bit = require('node-bittrex-api')
+var bittrex = require('node-bittrex-api')
 var MongoClient = require('mongodb').MongoClient;
 
-bit.options({
+bittrex.options({
   'apikey' : '0aafd35549524f89b442e21a1f01dc68',
   'apisecret' : '320ce990f19d40ea932bd9f91f347a49',
 });
