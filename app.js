@@ -4,6 +4,8 @@ var app = express();
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
+app.use(bodyParser.josn());
+
 var Markets = require('./Models/markets.js');
 //connect to mongoose
 mongoose.connect('mongodb://admin:sr153@localhost:27017/markets?authSource=admin');
