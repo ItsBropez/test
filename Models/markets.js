@@ -25,3 +25,8 @@ module.exports.getMarkets = function (callback, limit) {
 module.exports.getMarketById = function (id, callback) {
     Markets.findById(id, callback);
 };
+
+//add market
+module.exports.addMarket = function (market, callback) {
+    Markets.create(market, callback);
+};
