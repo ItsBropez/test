@@ -21,6 +21,6 @@ MongoClient.connect("mongodb://localhost:27017/crypto", function (err, db) {
 });
 
 bittrex.getmarketsummaries(function (data, err) {
-    console.log(data.result);
+    console.log(data.[0]);
     
 });
