@@ -10,13 +10,12 @@ var marketsSchema = mongoose.Schema({
     Bid: Number,
     Ask: Number,
     OpenBuyOrders: Number,
-    OpenSellOrders: Number,
-    },
+    OpenSellOrders: Number
 });
 
 var Markets = module.exports = mongoose.model('markets');
 
 //get markets
-module.exports.getMarkets() = function(callback, limit){
+module.exports.getMarkets() = function (callback, limit) {
     Markets.find(callback).limit(limit);
-}
+};
