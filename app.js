@@ -6,7 +6,7 @@ var mongoose = require('mongoose');
 
 var Markets = require('./Models/markets.js');
 //connect to mongoose
-mongoose.connect('mongodb://localhost/restful', {user: 'admin', pass: 'sr153', authdb: 'admin'});
+mongoose.connect('mongodb://admin:sr153@localhost/dataDB?authSource=adminB');
 var db = mongoose.connection;
 
 app.get('/', function (req, res) {
