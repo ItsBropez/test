@@ -6,7 +6,7 @@ var mongoose = require('mongoose');
 
 var Markets = require('./Models/markets.js');
 //connect to mongoose
-mongoose.connect('mongodb://admin:sr153@localhost:27017/markets');
+mongoose.connect('mongodb://admin:sr153@localhost:27017/markets?authSource=admin');
 var db = mongoose.connection;
 
 app.get('/', function (req, res) {
