@@ -1,0 +1,23 @@
+{
+  "name": "testing",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "itsbropez",
+  "license": "ISC",
+  "dependencies": {
+    "mongodb": "^2.2.33"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ItsBropez/testing.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ItsBropez/testing/issues"
+  },
+  "homepage": "https://github.com/ItsBropez/testing#readme",
+  "description": ""
+}
