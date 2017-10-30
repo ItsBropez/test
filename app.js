@@ -23,6 +23,15 @@ app.get('/markets', function (req, res) {
     });
 });
 
+app.get('/markets/:_id', function (req, res) {
+    Markets.getMarketById(req.params._id, function (err, market) {
+        if (err) {
+            throw err;
+        }
+        res.json(market);
+    });
+});
+
 
 app.listen(3000);
 console.log('Running on port 3000...');
