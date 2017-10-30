@@ -4,7 +4,7 @@ var app = express();
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
-Markets = require('./Models/markets.js');
+var Markets = require('./Models/markets.js');
 //connect to mongoose
 mongoose.connect('mongodb://localhost/restful', {user: 'admin', pass: 'sr153', authdb: 'admin'});
 var db = mongoose.connection;
