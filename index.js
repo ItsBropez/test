@@ -25,6 +25,6 @@ var MongoClient = require('mongodb').MongoClient
 var url = 'mongodb://localhost:27017/crypto';
 
 MongoClient.connect(url,function(err,db){
-	db.admin().listDatabases
+	console.log(db.admin().listDatabases);
 	db.close
 });
