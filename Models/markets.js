@@ -16,6 +16,6 @@ var marketsSchema = mongoose.Schema({
 var Markets = module.exports = mongoose.model('Markets', marketsSchema);
 
 //get markets
-module.exports.getMarkets() = function (callback, limit) {
+module.exports.getMarkets = function (callback, limit) {
     Markets.find(callback).limit(limit);
 };
