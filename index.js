@@ -14,5 +14,16 @@ MongoClient.connect("mongodb://localhost:27017/crypto", function (err, db) {
      if(err) throw err;
 	 console.log('Connected');
      //Write databse Insert/Update/Query code here..
-     db.close          
+              
+});
+
+bittrex.getmarketsummaries( function( data, err ) {
+  if (err) {
+    return console.error(err);
+  }
+  for( var i in data.result ) {
+    bittrex.getticker( { market : data.result[i].MarketName }, function( ticker ) {
+      console.log( ticker );
+    });
+  }
 });
