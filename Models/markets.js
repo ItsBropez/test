@@ -13,7 +13,7 @@ var marketsSchema = mongoose.Schema({
     OpenSellOrders: Number
 });
 
-var Markets = module.exports = mongoose.model('markets');
+var Markets = module.exports = mongoose.model('Markets');
 
 //get markets
 module.exports.getMarkets() = function (callback, limit) {
