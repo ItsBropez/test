@@ -12,7 +12,9 @@ console.log('Bittrex Keys insterted');
 
 // Connect to the db
 MongoClient.connect("mongodb://localhost:27017/crypto", function (err, db) {
-    assert.equals(null, err);
+    if (err) {
+        throw err;
+    }
     console.log('Connected');
     //Write databse Insert/Update/Query code here..
               
