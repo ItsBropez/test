@@ -17,6 +17,6 @@ MongoClient.connect("mongodb://localhost:27017/crypto", function (err, db) {
               
 });
 
-bittrex.getmarketsummaries( function( data, err ) {
+bittrex.getmarketsummary( { market : 'BTC-VTC'}, function( data, err ) {
   console.log( data );
 });
