@@ -1,5 +1,4 @@
 'use strict';
-var http = require('http');
 var bittrex = require('node-bittrex-api');
 var MongoClient = require('mongodb').MongoClient;
 var assert = require('assert');
@@ -16,11 +15,12 @@ MongoClient.connect("mongodb://localhost:27017/crypto", function (err, db) {
         throw err;
     }
     console.log('Connected');
+    db.close;
     //Write databse Insert/Update/Query code here..
               
 });
 
 bittrex.getmarketsummaries(function (data, err) {
-    console.log(data.result[0]);
+    console.log(data.result[0].MarketName);
     
 });
