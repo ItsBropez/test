@@ -22,6 +22,6 @@ myApp.config(function($routeProvider){
         templateUrl: 'views/edit_market.html'
     }
     .otherwise({
-        redirectTo: 't'
+        redirectTo: '/'
     });
 });
