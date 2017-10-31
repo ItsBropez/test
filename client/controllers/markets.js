@@ -5,7 +5,7 @@ myApp.controller('MarketsController', ['$scope', '$http', '$location', '$routePa
     
     $scope.getMarkets = function () {
         $http.get('/markets').then(function (responce) {
-            $scope.markets = responce;
+            $scope.markets = responce.data;
         }, function (error) {
             console.log(error);
         });
