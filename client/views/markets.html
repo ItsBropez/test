@@ -7,14 +7,14 @@
                     <thead>
                         <tr>
                           <th>Market Name</th>
-                          <th>Entries</th>
+                          <th></th>
                         </tr>
                     </thead>
 
                     <tbody>
                         <tr ng-repeat="market in markets">
                             <td>{{ market.MarketName }}</td>
-                            <td class="btn btn-primary" href="/markets/entries/{{market._id}}">Veiw Entries</td>
+                            <td class="btn btn-primary" href="/markets/entries/{{market._id}}">Veiw Market</td>
                         </tr>
                   </tbody>
                 </table>

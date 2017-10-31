@@ -10,4 +10,11 @@ myApp.controller('MarketsController', ['$scope', '$http', '$location', '$routePa
             console.log(error);
         });
     };
+    $scope.getMarket = function () {
+        $http.get('/market/:id').then(function (responce) {
+            $scope.market = responce.data;
+        }, function (error) {
+            console.log(error);
+        });
+    };
 }]);

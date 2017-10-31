@@ -1,0 +1,34 @@
+<div class="ng-init: getMarket()">
+    <div class="row">
+        <main role="main" class="col-sm-12 ml-sm-auto col-md-10 pt-3">
+            <h2>{{market.MarketName}}</h2>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Entered</th>
+                            <th>Last</th>
+                            <th>Bid</th>
+                            <th>Ask</th>
+                            <th>BaseVolume</th>
+                            <th>OpenBuyOrders</th>
+                            <th>OpenSellOrders</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr ng-repeat="item in market">
+                            <td>{{ item.Entered }}</td>
+                            <td>{{ item.Last }}</td>
+                            <td>{{ item.Bid }}</td>
+                            <td>{{ item.Ask }}</td>
+                            <td>{{ item.BaseVolume }}</td>
+                            <td>{{ item.OpenBuyOrders }}</td>
+                            <td>{{ item.OpenSellOrders }}</td>
+                        </tr>
+                  </tbody>
+                </table>
+            </div>
+        </main>
+  </div>
+</div>
