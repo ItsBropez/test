@@ -56,7 +56,6 @@ module.exports.updateMarket = function (id, market, options, callback) {
 };
 
 //delete market
-//add market
 module.exports.removeMarket = function (id, callback) {
     var query = {_id: id};
     Market.remove(query, callback);
