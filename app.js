@@ -44,6 +44,16 @@ app.post('/markets', function (req, res) {
     });
 });
 
+app.put('/markets/:_id', function (req, res) {
+    var id = request.params._id;
+    var market = req.body;
+    Market.updateMarket(id, market, {}, function (err, market) {
+        if (err) {
+            throw err;
+        }
+        res.json(market);
+    });
+});
 
 app.listen(3000);
 console.log('Running on port 3000...');
