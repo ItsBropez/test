@@ -55,5 +55,15 @@ app.put('/markets/:_id', function (req, res) {
     });
 });
 
+app.delete('/markets/:_id', function (req, res) {
+    var id = request.params._id;
+    Market.removeMarket(id, function (err, market) {
+        if (err) {
+            throw err;
+        }
+        res.json(market);
+    });
+});
+
 app.listen(3000);
 console.log('Running on port 3000...');

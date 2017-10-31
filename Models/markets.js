@@ -51,6 +51,13 @@ module.exports.updateMarket = function (id, market, options, callback) {
         OpenSellOrders: market.OpenSellOrders,
         PrevDay: market.PrevDay,
         Entered: Date.now
-    }
+    };
     Markets.fineOneAndUpdate(query, update, options, callback);
+};
+
+//delete market
+//add market
+module.exports.removeMarket = function (id, callback) {
+    var query = {_id: id};
+    Markets.remove(query, callback);
 };
