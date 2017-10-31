@@ -4,7 +4,7 @@ myApp.config(function ($routeProvider) {
     $routeProvider.when('/', {
         controller: 'MarketsController',
         templateUrl: 'views/markets.html'
-    })
+        })
         .when('/markets', {
             controller: 'MarketsController',
             templateUrl: 'views/markets.html'
