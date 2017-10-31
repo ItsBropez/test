@@ -4,7 +4,7 @@ var app = express();
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
-app.use(express.static(_dirname + "/client"));
+app.use(express.static("./client"));
 app.use(bodyParser.json());
 
 var Markets = require('./Models/markets.js');
