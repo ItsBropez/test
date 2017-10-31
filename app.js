@@ -7,7 +7,8 @@ var mongoose = require('mongoose');
 app.use(express.static("./client"));
 app.use(bodyParser.json());
 
-var Markets = require('./Models/markets.js');
+var Market = require('./models/market.js');
+
 //connect to mongoose
 mongoose.connect('mongodb://admin:sr153@localhost:27017/Bittrex?authSource=admin');
 var db = mongoose.connection;
@@ -18,7 +19,7 @@ app.get('/', function (req, res) {
 });
 
 app.get('/markets', function (req, res) {
-    Markets.getMarkets(function (err, markets) {
+    Market.getMarkets(function (err, markets) {
         if (err) {
             throw err;
         }
@@ -27,7 +28,7 @@ app.get('/markets', function (req, res) {
 });
 
 app.get('/markets/:_id', function (req, res) {
-    Markets.getMarketById(req.params._id, function (err, market) {
+    Market.getMarketById(req.params._id, function (err, market) {
         if (err) {
             throw err;
         }
@@ -46,7 +47,7 @@ app.post('/markets', function (req, res) {
 });
 
 app.put('/markets/:_id', function (req, res) {
-    var id = request.params._id;
+    var id = req.params._id;
     var market = req.body;
     Market.updateMarket(id, market, {}, function (err, market) {
         if (err) {
@@ -57,7 +58,7 @@ app.put('/markets/:_id', function (req, res) {
 });
 
 app.delete('/markets/:_id', function (req, res) {
-    var id = request.params._id;
+    var id = req.params._id;
     Market.removeMarket(id, function (err, market) {
         if (err) {
             throw err;

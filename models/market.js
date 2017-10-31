@@ -1,7 +1,7 @@
 'use strict';
 var mongoose = require('mongoose');
 
-var marketsSchema = mongoose.Schema({
+var marketSchema = mongoose.Schema({
     MarketName: String,
     High: Number,
     Low: Number,
@@ -17,21 +17,21 @@ var marketsSchema = mongoose.Schema({
     Entered: { type: Date, default: Date.now}
 });
 
-var Markets = module.exports = mongoose.model('Markets', marketsSchema);
+var Market = module.exports = mongoose.model('Market', marketSchema);
 
 //get markets
 module.exports.getMarkets = function (callback, limit) {
-    Markets.find(callback).limit(limit);
+    Market.find(callback).limit(limit);
 };
 
 //get market
 module.exports.getMarketById = function (id, callback) {
-    Markets.findById(id, callback);
+    Market.findById(id, callback);
 };
 
 //add market
 module.exports.addMarket = function (market, callback) {
-    Markets.create(market, callback);
+    Market.create(market, callback);
 };
 
 //update market
@@ -52,12 +52,12 @@ module.exports.updateMarket = function (id, market, options, callback) {
         PrevDay: market.PrevDay,
         Entered: Date.now
     };
-    Markets.fineOneAndUpdate(query, update, options, callback);
+    Market.fineOneAndUpdate(query, update, options, callback);
 };
 
 //delete market
 //add market
 module.exports.removeMarket = function (id, callback) {
     var query = {_id: id};
-    Markets.remove(query, callback);
+    Market.remove(query, callback);
 };
