@@ -27,7 +27,9 @@ function updateData() {
             throw err;
         }
         MongoClient.connect(url, function (error, db) {
-            assert(null, error);
+            if (error) {
+                throw error;
+            }
             data.result.forEach(function (item) {
                 db.collection('markets').insert(item);
             });
