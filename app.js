@@ -7,6 +7,8 @@ var assert = require('assert');
 var mongoose = require('mongoose');
 var MongoClient = require('mongodb');
 
+var info = require('./info.js')
+
 app.use(express.static("./client"));
 app.use(bodyParser.json());
 
