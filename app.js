@@ -11,9 +11,10 @@ app.use(express.static("./client"));
 app.use(bodyParser.json());
 
 var Market = require('./models/market.js');
+var url = 'mongodb://admin:sr153@localhost:27017/Bittrex?authSource=admin';
 
 //connect to mongoose
-mongoose.connect('mongodb://admin:sr153@localhost:27017/Bittrex?authSource=admin');
+mongoose.connect(url);
 var db = mongoose.connection;
 
 function updateData() {
@@ -25,7 +26,7 @@ function updateData() {
         if (err) {
             throw err;
         }
-        MongoClient.connect('mongodb://admin:sr153@localhost:27017/Bittrex/?authSource=admin', function (error, db) {
+        MongoClient.connect(url, function (error, db) {
             assert(null, error);
             data.result.forEach(function (item) {
                 db.collection('markets').insert(item);
