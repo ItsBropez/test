@@ -39,7 +39,7 @@ function updateData() {
             data.result.forEach(function (item) {
                 db1.collection('markets').insert(item);
             });
-            console.timestamp("Entry Created");
+            console.log("Entry Created");
             db1.close();
         });
     });
