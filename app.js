@@ -13,6 +13,8 @@ app.use(bodyParser.json());
 var Market = require('./models/market.js');
 var url = 'mongodb://admin:sr153@localhost:27017/Bittrex?authSource=admin';
 
+console.log(VAR.apisecret);
+
 //connect to mongoose
 mongoose.connect(url);
 var db = mongoose.connection;
