@@ -3,7 +3,11 @@ var express = require('express');
 var app = express();
 var bittrex= require('node-bittrex-api');
 var bodyParser = require('body-parser');
+var assert = require('assert');
 var mongoose = require('mongoose');
+var MongoClient = require('mongodb')
+
+var url = 'mongodb://localhost:27017/Bittrex';
 
 app.use(express.static("./client"));
 app.use(bodyParser.json());
@@ -18,13 +22,21 @@ bittrex.options({
     'apikey': '0aafd35549524f89b442e21a1f01dc68',
     'apisecret': '320ce990f19d40ea932bd9f91f347a49'
 });
-
-bittrex.getmarketsummaries(function (data, err) {
-    data.result.forEach( function (item) {
-       console.log(item); 
+function updateData(){
+    bittrex.getmarketsummaries(function (data, err) {
+        assert(null,err);
+        MongoClient.connect(url, function(error, db) {
+            assert(null,error)
+            data.result.forEach( function (item) {
+                db.collection('bittrex').insert(item);
+            });
+            console.log('Entry Created at ' + Date.now);
+            db.close();
+        });
     });
+};
 
-});
+setInterval(updateData(), 60*15*1000);
     
 
 app.get('/', function (req, res) {
