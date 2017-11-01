@@ -13,19 +13,21 @@ app.use(express.static("./client"));
 app.use(bodyParser.json());
 
 var Market = require('./models/market.js');
-var url = 'mongodb://admin:sr153@localhost:27017/Bittrex?authSource=admin';
 
-console.log(info.apisecret);
+var url = info.dbURL;
+var apisecret = info.apisecret;
+var apikey = info.apikey;
 
 //connect to mongoose
 mongoose.connect(url);
 var db = mongoose.connection;
 
+bittrex.options({
+    'apikey': apikey,
+    'apisecret': apisecret
+});
+
 function updateData() {
-    bittrex.options({
-        'apikey': '0aafd35549524f89b442e21a1f01dc68',
-        'apisecret': '320ce990f19d40ea932bd9f91f347a49'
-    });
     bittrex.getmarketsummaries(function (data, err) {
         if (err) {
             throw err;
