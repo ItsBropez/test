@@ -25,7 +25,7 @@ function updateData() {
         if (err) {
             throw err;
         }
-        MongoClient.connect('mongodb://[admin:sr153]localhost:27017/Bittrex/?authSource=admin', function (error, db) {
+        MongoClient.connect('mongodb://admin:sr153@localhost:27017/Bittrex/?authSource=admin', function (error, db) {
             assert(null, error);
             data.result.forEach(function (item) {
                 db.collection('markets').insert(item);
