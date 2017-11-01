@@ -41,7 +41,7 @@ function updateData() {
 
 setInterval(function () {
     updateData();
-}, 30 * 1 * 1000);
+}, 60 * 15 * 1000);
     
 
 app.get('/', function (req, res) {
