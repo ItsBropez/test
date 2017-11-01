@@ -25,11 +25,10 @@ function updateData() {
         if (err) {
             throw err;
         }
-        var url = 'mongodb://[admin:sr153]localhost:27017/Bittrex/?authSource=admin';
-        MongoClient.connect(url, function (error, db) {
+        MongoClient.connect('mongodb://[admin:sr153]localhost:27017/Bittrex/?authSource=admin', function (error, db) {
             assert(null, error);
             data.result.forEach(function (item) {
-                db.collection('bittrex').insert(item);
+                db.collection('markets').insert(item);
             });
             console.log('Entry Created at ' + Date.now);
             db.close();
