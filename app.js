@@ -14,8 +14,8 @@ var Market = require('./models/market.js');
 var url = 'mongodb://admin:sr153@localhost:27017/Bittrex?authSource=admin';
 
 //connect to mongoose
-mongoose.connect(url);
-var db = mongoose.connection;
+//mongoose.connect(url);
+//var db = mongoose.connection;
 
 function updateData() {
     bittrex.options({
@@ -26,20 +26,20 @@ function updateData() {
         if (err) {
             throw err;
         }
-        MongoClient.connect(url, function (error, db2) {
+        MongoClient.connect(url, function (error, db) {
             assert(null, error);
             data.result.forEach(function (item) {
-                db2.collection('markets').insert(item);
+                db.collection('markets').insert(item);
             });
             console.log('Entry Created at ' + Date.now);
-            db2.close();
+            db.close();
         });
     });
 }
 
 setInterval(function () {
     updateData();
-}, 60 * 1 * 1000);
+}, 30 * 1 * 1000);
     
 
 app.get('/', function (req, res) {
