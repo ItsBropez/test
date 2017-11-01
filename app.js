@@ -7,7 +7,7 @@ var assert = require('assert');
 var mongoose = require('mongoose');
 var MongoClient = require('mongodb')
 
-var url = 'mongodb://localhost:27017/Bittrex';
+var url = 'mongodb://[admin:sr153]localhost:27017/Bittrex/?authSource=admin';
 
 app.use(express.static("./client"));
 app.use(bodyParser.json());
@@ -24,7 +24,9 @@ bittrex.options({
 });
 function updateData(){
     bittrex.getmarketsummaries(function (data, err) {
-        assert(null,err);
+        if (err) {
+            throw err;
+        }
         MongoClient.connect(url, function(error, db) {
             assert(null,error)
             data.result.forEach( function (item) {

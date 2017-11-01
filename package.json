@@ -13,7 +13,6 @@
     "express": "*",
     "mongoose": "*",
     "body-parser":"*",
-    "assert": "*";
   },
   "devDependencies": {},
   "repository": {
