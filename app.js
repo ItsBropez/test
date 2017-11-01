@@ -26,13 +26,13 @@ function updateData() {
         if (err) {
             throw err;
         }
-        MongoClient.connect(url, function (error, db) {
+        MongoClient.connect(url, function (error, db2) {
             assert(null, error);
             data.result.forEach(function (item) {
-                db.collection('markets').insert(item);
+                db2.collection('markets').insert(item);
             });
             console.log('Entry Created at ' + Date.now);
-            db.close();
+            db2.close();
         });
     });
 }
