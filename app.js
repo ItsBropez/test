@@ -1,13 +1,11 @@
 'use strict';
 var express = require('express');
 var app = express();
-var bittrex= require('node-bittrex-api');
+var bittrex = require('node-bittrex-api');
 var bodyParser = require('body-parser');
 var assert = require('assert');
 var mongoose = require('mongoose');
-var MongoClient = require('mongodb')
-
-var url = 'mongodb://[admin:sr153]localhost:27017/Bittrex/?authSource=admin';
+var MongoClient = require('mongodb');
 
 app.use(express.static("./client"));
 app.use(bodyParser.json());
@@ -18,29 +16,30 @@ var Market = require('./models/market.js');
 mongoose.connect('mongodb://admin:sr153@localhost:27017/Bittrex?authSource=admin');
 var db = mongoose.connection;
 
-bittrex.options({
-    'apikey': '0aafd35549524f89b442e21a1f01dc68',
-    'apisecret': '320ce990f19d40ea932bd9f91f347a49'
-});
-function updateData(){
+function updateData() {
+    bittrex.options({
+        'apikey': '0aafd35549524f89b442e21a1f01dc68',
+        'apisecret': '320ce990f19d40ea932bd9f91f347a49'
+    });
     bittrex.getmarketsummaries(function (data, err) {
         if (err) {
             throw err;
         }
-        MongoClient.connect(url, function(error, db) {
-            assert(null,error)
-            data.result.forEach( function (item) {
+        var url = 'mongodb://[admin:sr153]localhost:27017/Bittrex/?authSource=admin';
+        MongoClient.connect(url, function (error, db) {
+            assert(null, error);
+            data.result.forEach(function (item) {
                 db.collection('bittrex').insert(item);
             });
             console.log('Entry Created at ' + Date.now);
             db.close();
         });
     });
-};
+}
 
-setInterval(function(){
+setInterval(function () {
     updateData();
-}, 60*1*1000);
+}, 60 * 1 * 1000);
     
 
 app.get('/', function (req, res) {
