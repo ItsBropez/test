@@ -36,7 +36,9 @@ function updateData(){
     });
 };
 
-setInterval(updateData(), 60*15*1000);
+setInterval(function(){
+    updateData();
+}, 60*15*1000);
     
 
 app.get('/', function (req, res) {
