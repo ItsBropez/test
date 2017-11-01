@@ -12,7 +12,8 @@
 	"node-bittrex-api": "*",
     "express": "*",
     "mongoose": "*",
-    "body-parser":"*"
+    "body-parser":"*",
+    "assert": "*";
   },
   "devDependencies": {},
   "repository": {
