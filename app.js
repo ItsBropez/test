@@ -49,7 +49,7 @@ function updateData() {
 //need to update other db with symbol and index then foreach item in data.result add index: , mcap:, availsupply: to the json item being inserted
 //maybe we update  collection prior to calling the logger.getsummary that holds the responce of api/ticker (ie symbol, index, mcap, supply) which is then cleared once logger is finished to avoid another large db
 function updateData() {
-	logger.getmarketsummaries(function (data, err) {
+	bittrex.getmarketsummaries(function (data, err) {
 		if (err) {
 			throw err;
 		}
