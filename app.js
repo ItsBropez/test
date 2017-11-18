@@ -96,13 +96,12 @@ function parseBittrex(input) {
                             item.mName = result.name;
                             item.mCap = result.market_cap_usd;
                             item.mSupply = result.available_supply;
-                            resolve(output);
+                            resolve(output[0]);
                        }
                    });   
             });
             db.close;
         });
-        setTimeout(resolve(output), 15000);
     });
 }
 
