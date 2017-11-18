@@ -89,7 +89,7 @@ function parseBittrex(input) {
                    if (err) {
                        throw err;
                    }
-                   reolve(res);
+                   resolve(res);
                });   
             //});
             db.close;
