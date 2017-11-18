@@ -89,14 +89,15 @@ function parseBittrex(input) {
                     if (err) {
                         throw err;
                     } else {
-                        output[0]['mID'] = JSON.stringify(result.id);
+                        output[0].mID = JSON.stringify(result.id);
                         output[0].mName = result.name;
                         output[0].mCap = result.market_cap_usd;
                         output[0].mSupply = result.available_supply;
+                        resolve(output[0]);
                    }
                });   
             //});
-            resolve(output[0]);
+            //resolve(output[0]);
             db.close;
         });
     });
