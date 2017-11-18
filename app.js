@@ -100,7 +100,7 @@ function parseBittrex(input) {
                        }
                    });   
             });
-            resolve(output[0]):
+            resolve(output[0]);
             db.close;
         });
     });
