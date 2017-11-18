@@ -88,12 +88,12 @@ function parseBittrex(input) {
                db.collection('data').findOne({"Symbol": output.MarketName}, function(err, ress){
                    if (err) {
                        throw err;
-                   }
+                   } else {
                    output[0].mID = ress.id;
                    output[0].mName = ress.name;
                    output[0].mCap = ress.market_cap_usd;
                    output[0].mSupply = ress.available_supply;
-                   
+                   }
                });   
             //});
             resolve(output);
