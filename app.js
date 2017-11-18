@@ -59,10 +59,20 @@ function getBittrex() {
     });
 }
 
+function parseBittrex(input) {
+    return new Promise(function (resolve, reject) {
+        var str = JSON.stringify(input);
+        str = str.replace('BTC-','');
+        var output = JSON.parse(str);
+        resolve(output);
+    });
+}
+
 function runner() {
     return getMarketCap()
         .then(logMarketCap)
-        .then(getBittrex);
+        .then(getBittrex)
+        .then(parseBittrex);
 }
 
 runner().then(function (resp) {
