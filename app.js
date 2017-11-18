@@ -101,8 +101,8 @@ function parseBittrex(input) {
                    });   
             });
             db.close;
-            setTimeout(resolve(output),5000);
         });
+        setTimeout(resolve(output), 5000);
     });
 }
 
