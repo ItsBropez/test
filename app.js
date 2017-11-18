@@ -95,7 +95,7 @@ function parseBittrex(input) {
                         output[0].mSupply = result.available_supply;
                         //resolve(output[0]); 
                    }
-                   resolve(output[0]);
+                   resolve(output);
                });   
             //});
             db.close;
