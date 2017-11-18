@@ -78,7 +78,7 @@ function parseBittrex(input) {
     return new Promise(function (resolve, reject) {
         var str = JSON.stringify(input);
         str = str.replace(/BTC-/g,'');
-        var output = str.toObject();
+        var output = JSON.parse(str);
     
         MongoClient.connect(mcURL, function (error, db) {
             if (error) {
@@ -89,14 +89,14 @@ function parseBittrex(input) {
                    if (err) {
                        throw err;
                    }
-                   output[0].set('mID', ress.id);
+                   output[0].mID = ress.id);
                    output[0].mName = ress.name;
                    output[0].mCap = ress.market_cap_usd;
                    output[0].mSupply = ress.available_supply;
                    
                });   
             //});
-            resolve(output[0]);
+            resolve(output);
             db.close;
         });
     });
