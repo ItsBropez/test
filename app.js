@@ -50,11 +50,11 @@ function logMarketCap(input) {
 		        reject(err);
             }
             input.forEach(function (item) {
-               db.collection('data').insert(item, function (err) {
-                  if (err) {
-                      reject (err);
-                  } 
-               }); 
+                db.collection('data').insert(item, function (err) {
+                    if (err) {
+                        reject(err);
+                    }
+                });
             });
             db.close;
             resolve();
@@ -77,7 +77,7 @@ function getBittrex() {
 function parseBittrex(input) {
     return new Promise(function (resolve, reject) {
         var str = JSON.stringify(input);
-        str = str.replace(/BTC-/g,'');
+        str = str.replace(/BTC-/g, '');
         
         //weird case where market name doesn't match 
         str = str.replace('NBT', 'USNBT');
@@ -89,11 +89,11 @@ function parseBittrex(input) {
             if (error) {
                 reject(err);
             }
-            output.forEach(function (item) {   
-                db.collection('data').findOne({"symbol": item.MarketName}, function(err, result){
+            output.forEach(function (item) {
+                db.collection('data').findOne({"symbol": item.MarketName}, function (err, result) {
                     if (err) {
                         console.log(item.MarketName);
-                    } else if (result == null) {
+                    } else if (result === null) {
 
                     } else {
                         item.Gap = item.OpenSellOrders - item.OpenBuyOrders;
@@ -101,13 +101,12 @@ function parseBittrex(input) {
                         item.mName = result.name;
                         item.mCap = result.market_cap_usd;
                         item.mSupply = result.available_supply;
-                        item.Gap
                     }
-                    count ++;
+                    count++;
                     if (count >= output.length) {
                         resolve(output);
-                    }    
-                });   
+                    }
+                });
             });
             //resolve(output[0]);
             db.close;
@@ -122,14 +121,13 @@ function logBittrex(input) {
 		        reject(err);
             }
             input.forEach(function (item) {
-               db.collection('data').insert(item, function (err) {
-                  if (err) {
-                      reject (err);
-                  } 
-               }); 
+                db.collection('data').insert(item, function (err) {
+                    if (err) {
+                        reject(err);
+                    }
+                });
             });
             db.close;
-            console.log('Completed');
             resolve();
         });
     });
@@ -142,8 +140,8 @@ function clearMarketCap() {
                 reject(err);
             }
             db.collection('data').remove({ });
-            db.close
-            resolve('Done');
+            db.close;
+            resolve('Entires Created!');
         });
     });
 }
