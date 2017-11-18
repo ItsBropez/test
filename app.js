@@ -84,21 +84,21 @@ function parseBittrex(input) {
             if (error) {
                 reject(err);
             }
-            //output.forEach(function (item) {
-               db.collection('data').findOne({"symbol": output[0].MarketName}, function(err, result){
-                    if (err) {
-                        throw err;
-                    } else {
-                        output[0].mID = result.id;
-                        output[0].mName = result.name;
-                        output[0].mCap = result.market_cap_usd;
-                        output[0].mSupply = result.available_supply;
-                        //resolve(output[0]); 
-                   }
-                   resolve(output);
-               });   
-            //});
+            output.forEach(function (item) {   
+                db.collection('data').findOne({"symbol": item.MarketName}, function(err, result){
+                        if (err) {
+                            throw err;
+                        } else {
+                            item.mID = result.id;
+                            item.mName = result.name;
+                            item.mCap = result.market_cap_usd;
+                            item.mSupply = result.available_supply;
+                            //resolve(output[0]); 
+                       }
+                   });   
+            });
             db.close;
+            resolve(output);
         });
     });
 }
