@@ -78,7 +78,10 @@ function parseBittrex(input) {
     return new Promise(function (resolve, reject) {
         var str = JSON.stringify(input);
         str = str.replace(/BTC-/g,'');
+        
+        //weird case where market name doesn't match 
         str = str.replace('NBT', 'USNBT');
+        
         var output = JSON.parse(str);
         var count = 0;
         
@@ -110,11 +113,31 @@ function parseBittrex(input) {
     });
 }
 
+function logBittrex(input) {
+    return new Promise(function (resolve, reject) {
+        MongoClient.connect(dbURL, function (error, db) {
+            if (error) {
+		        reject(err);
+            }
+            input.forEach(function (item) {
+               db.collection('data').insert(item, function (err) {
+                  if (err) {
+                      reject (err);
+                  } 
+               }); 
+            });
+            db.close;
+            resolve("Completed");
+        });
+    });
+}
+
 function runner() {
     return getMarketCap()
         .then(logMarketCap)
         .then(getBittrex)
-        .then(parseBittrex);
+        .then(parseBittrex)
+        .then(logBittrex);
 }
 
 runner().then(function (resp) {
