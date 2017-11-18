@@ -79,7 +79,22 @@ function parseBittrex(input) {
         var str = JSON.stringify(input);
         str = str.replace(/BTC-/g,'');
         var output = JSON.parse(str);
-        resolve(output);
+    
+        MongoClient.connect(mcURL, function (error, db) {
+            if (error) {
+                reject(err);
+            }
+            //output.forEach(function (item) {
+               db.collection('data').find({"Symbol": output[0].MarketName}, function(err, res){
+                   if (err) {
+                       throw err;
+                   }
+                   reolve(res);
+               });   
+            //});
+            db.close;
+            resolve();
+        });
     });
 }
 
