@@ -97,7 +97,7 @@ function parseBittrex(input) {
                    }
                });   
             //});
-            resolve(output[0]);
+            setTimeout(resolve(output[0]), 5000);
             db.close;
         });
     });
