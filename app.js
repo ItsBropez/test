@@ -141,7 +141,7 @@ function clearMarketCap() {
             }
             db.collection('data').remove({ });
             db.close;
-            resolve('Entires Created!');
+            resolve('Entries Created!');
         });
     });
 }
