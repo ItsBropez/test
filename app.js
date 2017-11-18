@@ -35,7 +35,7 @@ function logMarketCap(input) {
 		        reject(err);
             }
             input.forEach(function (item) {
-               db.collectoin('data').inset(item, function (err) {
+               db.collection('data').inset(item, function (err) {
                   if (err) {
                       reject (err);
                   } 
