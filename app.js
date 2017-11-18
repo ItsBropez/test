@@ -62,7 +62,7 @@ function getBittrex() {
 function parseBittrex(input) {
     return new Promise(function (resolve, reject) {
         var str = JSON.stringify(input);
-        str = str.replace('BTC-','');
+        str = str.replace(/BTC-/g,'');
         var output = JSON.parse(str);
         resolve(output);
     });
