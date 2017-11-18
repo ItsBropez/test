@@ -89,11 +89,12 @@ function parseBittrex(input) {
                    if (err) {
                        throw err;
                    }
-                   output[0].mID = ress.id;
-                   output[0].mName = ress.name;
-                   output[0].mCap = ress.market_cap_usd;
-                   output[0].mSupply = ress.available_supply;
-                   
+                   output[0].push({
+                        "mID" : ress.id,
+                        "mName" : ress.name,
+                        "mCap" : ress.market_cap_usd,
+                        "mSupply" : ress.available_supply
+                   })
                });   
             //});
             resolve(output[0]);
