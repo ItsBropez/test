@@ -90,11 +90,11 @@ function parseBittrex(input) {
                         throw err;
                     } else {
                         resolve(result);
-                        output[0].mID = result.id;
+                        /*output[0].mID = result.id;
                         output[0].mName = result.name;
                         output[0].mCap = result.market_cap_usd;
                         output[0].mSupply = result.available_supply;
-                        //resolve(output[0]);
+                        //resolve(output[0]); */
                    }
                });   
             //});
