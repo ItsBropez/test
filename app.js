@@ -65,7 +65,7 @@ function updateData() {
 					var id = item._id
 					//should give id of the latest entry inserted to db
 					console.log(id);
-				)};
+				});
 			});
 			console.log("Entry Created");
 			db.close();
