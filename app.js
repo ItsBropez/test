@@ -141,7 +141,7 @@ function clearMarketCap() {
             if (error) {
                 reject(err);
             }
-            db.colletion('data').remove({ });
+            db.collection('data').remove({ });
             db.close
             resolve('Done');
         });
