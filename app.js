@@ -78,6 +78,7 @@ function parseBittrex(input) {
     return new Promise(function (resolve, reject) {
         var str = JSON.stringify(input);
         str = str.replace(/BTC-/g,'');
+        str = str.replace('NBT', 'USNBT');
         var output = JSON.parse(str);
         
         MongoClient.connect(mcURL, function (error, db) {
