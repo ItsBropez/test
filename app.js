@@ -96,7 +96,7 @@ function parseBittrex(input) {
                    
                });   
             //});
-            resolve(output[1]);
+            resolve(ress.id);
             db.close;
         });
     });
