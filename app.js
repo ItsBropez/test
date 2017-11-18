@@ -90,18 +90,18 @@ function parseBittrex(input) {
                         if (err) {
                             console.log(item.MarketName);
                         } else if (result == null) {
-                            console.log(item.MarketName)
+                            
                         } else {
                             item.mID = result.id;
                             item.mName = result.name;
                             item.mCap = result.market_cap_usd;
                             item.mSupply = result.available_supply;
-                            //resolve(output[0]); 
+                            resolve(output[0]); 
                        }
                    });   
             });
             db.close;
-            resolve(output);
+            setTimeout(resolve(output),5000);
         });
     });
 }
