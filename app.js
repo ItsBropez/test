@@ -19,8 +19,8 @@ var apisecret = info.apisecret;
 var apikey = info.apikey;
 
 //connect to mongoose
-mongoose.connect(url);
-var db = mongoose.connection;
+//mongoose.connect(url);
+//var db = mongoose.connection;
 
 bittrex.options({
     'apikey': apikey,
