@@ -93,11 +93,10 @@ function parseBittrex(input) {
                         output[0].mName = ress.name;
                         output[0].mCap = ress.market_cap_usd;
                         output[0].mSupply = ress.available_supply;
-                        resolve(ress.id);
                    }
                });   
             //});
-            //resolve(output);
+            resolve(output[0]/mID);
             db.close;
         });
     });
