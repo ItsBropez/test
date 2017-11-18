@@ -96,10 +96,12 @@ function parseBittrex(input) {
                     } else if (result == null) {
 
                     } else {
+                        item.Gap = item.OpenSellOrders - item.OpenBuyOrders;
                         item.mID = result.id;
                         item.mName = result.name;
                         item.mCap = result.market_cap_usd;
                         item.mSupply = result.available_supply;
+                        item.Gap
                     }
                     count ++;
                     if (count >= output.length) {
