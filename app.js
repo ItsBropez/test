@@ -88,6 +88,8 @@ function parseBittrex(input) {
                 db.collection('data').findOne({"symbol": item.MarketName}, function(err, result){
                         if (err) {
                             console.log(item.MarketName);
+                        } else if (item == null) {
+                            console.log(item.MarketName)
                         } else {
                             item.mID = result.id;
                             item.mName = result.name;
