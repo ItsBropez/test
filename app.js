@@ -79,13 +79,13 @@ function parseBittrex(input) {
         var str = JSON.stringify(input);
         str = str.replace(/BTC-/g,'');
         var output = JSON.parse(str);
-    
+        resolve(output);
         MongoClient.connect(mcURL, function (error, db) {
             if (error) {
                 reject(err);
             }
             //output.forEach(function (item) {
-               db.collection('data').findOne({"Symbol": output[0].MarketName}, function(err, result){
+               db.collection('data').findOne({"Symbol": output.MarketName}, function(err, result){
                     if (err) {
                         throw err;
                     } else {
