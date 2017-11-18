@@ -80,6 +80,7 @@ function parseBittrex(input) {
         str = str.replace(/BTC-/g,'');
         str = str.replace('NBT', 'USNBT');
         var output = JSON.parse(str);
+        var count = 0;
         
         MongoClient.connect(mcURL, function (error, db) {
             if (error) {
@@ -87,20 +88,23 @@ function parseBittrex(input) {
             }
             output.forEach(function (item) {   
                 db.collection('data').findOne({"symbol": item.MarketName}, function(err, result){
-                        if (err) {
-                            console.log(item.MarketName);
-                        } else if (result == null) {
-                            
-                        } else {
-                            item.mID = result.id;
-                            item.mName = result.name;
-                            item.mCap = result.market_cap_usd;
-                            item.mSupply = result.available_supply;
-                            
-                       }
-                   });   
+                    if (err) {
+                        console.log(item.MarketName);
+                    } else if (result == null) {
+
+                    } else {
+                        item.mID = result.id;
+                        item.mName = result.name;
+                        item.mCap = result.market_cap_usd;
+                        item.mSupply = result.available_supply;
+                    }
+                    count ++;
+                    if (count >= output.length) {
+                        resolve(output);
+                    }    
+                });   
             });
-            resolve(output[0]);
+            //resolve(output[0]);
             db.close;
         });
     });
