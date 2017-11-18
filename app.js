@@ -61,7 +61,8 @@ function getBittrex() {
 
 function runner() {
     return getMarketCap()
-        .then(logMarketCap);
+        .then(logMarketCap)
+        .then(getBittrex);
 }
 
 runner().then(function (resp) {
