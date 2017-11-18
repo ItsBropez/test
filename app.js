@@ -1,7 +1,6 @@
 'use strict';
 var bittrex = require('node-bittrex-api');
 var info = require('./info.js');
-var XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
 var https = require('https');
 var MongoClient = require('mongodb');
 
