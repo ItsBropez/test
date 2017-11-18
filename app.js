@@ -89,6 +89,7 @@ function parseBittrex(input) {
                     if (err) {
                         throw err;
                     } else {
+                        resolve(result);
                         output[0].mID = result.id;
                         output[0].mName = result.name;
                         output[0].mCap = result.market_cap_usd;
