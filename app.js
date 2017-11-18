@@ -93,7 +93,6 @@ function parseBittrex(input) {
                });   
             //});
             db.close;
-            resolve();
         });
     });
 }
