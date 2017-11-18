@@ -129,7 +129,21 @@ function logBittrex(input) {
                }); 
             });
             db.close;
-            resolve("Completed");
+            console.log('Completed');
+            resolve();
+        });
+    });
+}
+
+function clearMarketCap() {
+    return new Promise(function (resolve, reject) {
+        MongoClient.connect(mcURL, function (error, db) {
+            if (error) {
+                reject(err);
+            }
+            db.colletion('data').remove({ });
+            db.close
+            resolve('Done');
         });
     });
 }
@@ -139,7 +153,8 @@ function runner() {
         .then(logMarketCap)
         .then(getBittrex)
         .then(parseBittrex)
-        .then(logBittrex);
+        .then(logBittrex)
+        .then(clearMarketCap);
 }
 
 runner().then(function (resp) {
