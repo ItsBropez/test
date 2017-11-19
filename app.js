@@ -17,7 +17,7 @@ var mcURL = info.mcURL;
 var apisecret = info.apisecret;
 var apikey = info.apikey;
 
-var index = 1;
+var index = info.index;
 /*
 app.use(express.static("./client"));
 app.use(bodyParser.json());
@@ -108,6 +108,7 @@ function parseBittrex(input) {
                     if (count >= output.length) {
                         resolve(output);
                         index++;
+                        info.index++;
                     }
                 });
             });
