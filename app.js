@@ -17,8 +17,7 @@ var mcURL = info.mcURL;
 var apisecret = info.apisecret;
 var apikey = info.apikey;
 
-var hash = "5a110e302aaa074c4243f539";
-var index = 1;
+var index = 35;
 
 /*
 app.use(express.static("./client"));
@@ -116,8 +115,11 @@ function parseBittrex(input) {
                     count++;
                     if (count >= output.length) {
                         resolve(output);
+                        console.log("Last index used " + index);
                         index++;
-                        /*db.collection('data').update({"tracer" : "HHHHH"}, {"tracer": "HHHHH", "index" : index}); */
+                        console.log("Next index " + index);
+                        
+                        db.collection('data').updateOne({"tracer" : "HHHHH"}, {"tracer": "HHHHH", "index" : index});
                     }
                 });
             });
@@ -175,11 +177,6 @@ setInterval(function () {
 
 console.log('Running on port 3000...');
 /*
-setInterval(function () {
-    updateData();
-}, 60 * 0.5 * 1000);
-    
-
 app.get('/', function (req, res) {
     res.send('Use /markets');
 
