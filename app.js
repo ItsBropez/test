@@ -17,6 +17,7 @@ var mcURL = info.mcURL;
 var apisecret = info.apisecret;
 var apikey = info.apikey;
 
+var index = 1;
 /*
 app.use(express.static("./client"));
 app.use(bodyParser.json());
@@ -101,10 +102,12 @@ function parseBittrex(input) {
                         item.mName = result.name;
                         item.mCap = result.market_cap_usd;
                         item.mSupply = result.available_supply;
+                        item.index = index;
                     }
                     count++;
                     if (count >= output.length) {
                         resolve(output);
+                        index++;
                     }
                 });
             });
