@@ -108,7 +108,7 @@ function parseBittrex(input) {
                     if (count >= output.length) {
                         resolve(output);
                         index++;
-                        info.index++;
+                        info.index = index;
                     }
                 });
             });
