@@ -92,7 +92,7 @@ function parseBittrex(input) {
             if (error) {
                 reject(err);
             }
-            db.collection('data').findOne({"_id": ObjectId(hash)}, function (err, resss) {
+            db.collection('data').findOne({"tracer": "HHHHH"}, function (err, resss) {
                 if (err) {
                     throw err;
                 }
@@ -117,7 +117,7 @@ function parseBittrex(input) {
                     if (count >= output.length) {
                         resolve(output);
                         index++;
-                        db.collection('data').update({"_id" : ObjectId("5a110e302aaa074c4243f539")}, {"index" : index});
+                        db.collection('data').update({"tracer" : "HHHHH"}, {"tracer": "HHHHH", "index" : index});
                     }
                 });
             });
