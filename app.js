@@ -17,7 +17,9 @@ var mcURL = info.mcURL;
 var apisecret = info.apisecret;
 var apikey = info.apikey;
 
-var index = info.index;
+var hash = "5a110e302aaa074c4243f539";
+var index;
+
 /*
 app.use(express.static("./client"));
 app.use(bodyParser.json());
@@ -90,6 +92,13 @@ function parseBittrex(input) {
             if (error) {
                 reject(err);
             }
+            db.collection('data').findOne({"_id": ObjectId(hash)}, function (err, resss) {
+                if (err) {
+                    throw err;
+                }
+                index = resss.index;
+                console.log(index);
+            });
             output.forEach(function (item) {
                 db.collection('data').findOne({"symbol": item.MarketName}, function (err, result) {
                     if (err) {
@@ -108,7 +117,7 @@ function parseBittrex(input) {
                     if (count >= output.length) {
                         resolve(output);
                         index++;
-                        info.index = index;
+                        db.collection('data').update({"_id" : ObjectId("5a110e302aaa074c4243f539")}, {"index" : index});
                     }
                 });
             });
