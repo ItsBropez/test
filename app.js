@@ -22,7 +22,7 @@ MongoClient.connect(dbURL, function (error, db) {
     if (error) {
         reject(err);
     }
-    db.find({"Tracer" : "HHHHH"}, function (res, err) {
+    db.collection('data').findOne({"Tracer" : "HHHHH"}, function (res, err) {
         if (err) {
             throw err;
         }
