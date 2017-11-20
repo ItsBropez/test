@@ -26,8 +26,8 @@ MongoClient.connect(dbURL, function (error, db) {
         if (error) {
             throw error;
         }
-        index = mindex.index
-        db.close
+        index = mindex.index;
+        db.close;
     })
 });
 /*
@@ -150,7 +150,7 @@ function logBittrex(input) {
                     }
                 });
             });
-            db.collection('data').updateOne({"tracer" : "HHHHH"}, {"tracer": "HHHHH", "index" : index});
+            db.collection('data').updateOne({"Tracer" : "HHHHH"}, {"Tracer": "HHHHH", "index" : index});
             db.close;
             resolve();
         });
