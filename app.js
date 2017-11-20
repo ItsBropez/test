@@ -22,11 +22,11 @@ MongoClient.connect(dbURL, function (error, db) {
     if (error) {
         reject(err);
     }
-    db.collection('data').findOne({"Tracer" : "HHHHH"}, function (res, err) {
-        if (err) {
-            throw err;
+    db.collection('data').findOne({"Tracer" : "HHHHH"}, function (error, mindex) {
+        if (error) {
+            throw error;
         }
-        index = res.index
+        index = mindex.index
         db.close
     })
 });
