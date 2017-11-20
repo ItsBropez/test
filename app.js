@@ -16,9 +16,20 @@ var dbURL = info.dbURL;
 var mcURL = info.mcURL;
 var apisecret = info.apisecret;
 var apikey = info.apikey;
+var index;
 
-var index = 35;
-
+MongoClient.connect(dbURL, function (error, db) {
+    if (error) {
+        reject(err);
+    }
+    db.findOne({"Tracer" : "HHHHH"}, function (res, err) {
+        if (err) {
+            throw err;
+        }
+        index = res.index
+        db.close
+    })
+});
 /*
 app.use(express.static("./client"));
 app.use(bodyParser.json());
@@ -118,8 +129,6 @@ function parseBittrex(input) {
                         console.log("Last index used " + index);
                         index++;
                         console.log("Next index " + index);
-                        
-                        db.collection('data').updateOne({"tracer" : "HHHHH"}, {"tracer": "HHHHH", "index" : index});
                     }
                 });
             });
@@ -141,6 +150,7 @@ function logBittrex(input) {
                     }
                 });
             });
+            db.collection('data').updateOne({"tracer" : "HHHHH"}, {"tracer": "HHHHH", "index" : index});
             db.close;
             resolve();
         });
@@ -173,7 +183,7 @@ setInterval(function () {
     runner().then(function (resp) {
         console.log(resp);
     });
-}, 60 * 15 * 1000);
+}, 60 * 1 * 1000);
 
 console.log('Running on port 3000...');
 /*
