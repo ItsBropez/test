@@ -65,12 +65,14 @@ function logMarketCap(input) {
 		        reject(err);
             }
             var i = 0;
+            console.log("MCAP Length = " + input.length);
             input.forEach(function (item) {
                 db.collection('data').insert(item, function (err) {
                     if (err) {
                         reject(err);
                     } else {
                     i++;
+                    console.log("i = " + i);
                     }
                 });
                 if (i >= input.length) {
