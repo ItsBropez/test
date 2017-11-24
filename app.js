@@ -27,8 +27,9 @@ MongoClient.connect(dbURL, function (error, db) {
             throw error;
         }
         index = mindex.index;
-        db.close;
+        db.close();
         console.log("Current index is " + index);
+        MongoClient.close();
     })
 });
 
@@ -71,7 +72,8 @@ function logMarketCap(input) {
                     }
                 });
             });
-            db.close;
+            db.close();
+            MongoClient.close();
             resolve();
         });
     });
@@ -127,7 +129,8 @@ function parseBittrex(input) {
                     }
                 });
             });
-            db.close;
+            db.close();
+            MongoClient.close();
         });
     });
 }
@@ -146,7 +149,8 @@ function logBittrex(input) {
                 });
             });
             db.collection('data').updateOne({"Tracer" : "HHHHH"}, {"Tracer": "HHHHH", "index" : index});
-            db.close;
+            db.close();
+            MongoClient.close();
             resolve();
         });
     });
@@ -159,7 +163,8 @@ function clearMarketCap() {
                 reject(err);
             }
             db.collection('data').remove({ });
-            db.close;
+            db.close();
+            MongoClient.close();
             resolve('Entries Created!');
         });
     });
