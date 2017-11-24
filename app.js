@@ -75,7 +75,7 @@ function logMarketCap(input) {
                     console.log("i = " + i);
                     }
                 });
-                if (i == input.length - 1) {
+                if (i == (input.length - 1)) {
                     db.close();
                     resolve();
                     console.log("Complete MCAP Log");
