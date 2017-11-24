@@ -2,7 +2,7 @@
 var bittrex = require('node-bittrex-api');
 var info = require('./info.js');
 var https = require('https');
-var MongoClient = require('mongodb');
+var MongoClient = require('mongodb').MongoClient;
 
 /*
 var express = require('express');
@@ -29,7 +29,6 @@ MongoClient.connect(dbURL, function (error, db) {
         index = mindex.index;
         db.close();
         console.log("Current index is " + index);
-        MongoClient.close();
     })
 });
 
@@ -73,7 +72,6 @@ function logMarketCap(input) {
                 });
             });
             db.close();
-            MongoClient.close();
             resolve();
         });
     });
@@ -130,7 +128,6 @@ function parseBittrex(input) {
                 });
             });
             db.close();
-            MongoClient.close();
         });
     });
 }
@@ -150,7 +147,6 @@ function logBittrex(input) {
             });
             db.collection('data').updateOne({"Tracer" : "HHHHH"}, {"Tracer": "HHHHH", "index" : index});
             db.close();
-            MongoClient.close();
             resolve();
         });
     });
@@ -164,7 +160,6 @@ function clearMarketCap() {
             }
             db.collection('data').remove({ });
             db.close();
-            MongoClient.close();
             resolve('Entries Created!');
         });
     });
