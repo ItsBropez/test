@@ -164,6 +164,7 @@ function logBittrex(input) {
                     db.collection('data').updateOne({"Tracer" : "HHHHH"}, {"Tracer": "HHHHH", "index" : index});
                     db.close();
                     resolve();
+                    console.log("Bittrex Logged");
                 }
             });
         });
