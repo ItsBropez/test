@@ -105,7 +105,7 @@ function parseBittrex(input) {
                 reject(err);
             }
             output.forEach(function (item) {
-                db.collection('data').findOne({"symbol": "'" + item.MarketName + "'"}, function (err, result) {
+                db.collection('data').findOne({"symbol": [item.MarketName]}, function (err, result) {
                     if (err) {
                         console.log(item.MarketName);
                     } else if (result === null) {
