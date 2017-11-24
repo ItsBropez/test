@@ -124,10 +124,10 @@ function parseBittrex(input) {
                         console.log("Last index used " + index);
                         index++;
                         console.log("Next index " + index);
+                        db.close();
                     }
                 });
             });
-            db.close();
         });
     });
 }
@@ -178,7 +178,7 @@ setInterval(function () {
     runner().then(function (resp) {
         console.log(resp);
     });
-}, 60 * 15 * 1000);
+}, 60 * 1 * 1000);
 
 console.log('Running on port 3000...');
 /*
