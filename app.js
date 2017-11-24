@@ -191,7 +191,7 @@ setInterval(function () {
     runner().then(function (resp) {
         console.log(resp);
     });
-}, 60 * 2 * 1000);
+}, 60 * 15 * 1000);
 
 console.log('Running on port 3000...');
 /*
