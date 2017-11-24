@@ -29,7 +29,7 @@ MongoClient.connect(dbURL, function (error, db) {
         index = mindex.index;
         db.close();
         console.log("Current index is " + index);
-    })
+    });
 });
 
 /*
@@ -78,6 +78,7 @@ function logMarketCap(input) {
                 if (i >= input.length) {
                     db.close();
                     resolve();
+                    console.log("Complete MCAP Log");
                 }
             });
         });
@@ -91,6 +92,7 @@ function getBittrex() {
                 reject(err);
             } else {
                 resolve(data.result);
+                console.log("Got Bittrex Data");
             }
         });
     });
@@ -111,6 +113,7 @@ function parseBittrex(input) {
             if (error) {
                 reject(err);
             }
+            console.log("Bittrex Length = " + output.length);
             output.forEach(function (item) {
                 db.collection('data').findOne({"symbol": [item.MarketName]}, function (err, result) {
                     if (err) {
@@ -126,6 +129,7 @@ function parseBittrex(input) {
                         item.index = index;
                     }
                     count++;
+                    console.log("count = " + count);
                     if (count >= output.length) {
                         resolve(output);
                         console.log("Last index used " + index);
@@ -146,12 +150,14 @@ function logBittrex(input) {
 		        reject(err);
             }
             var j = 0;
+            console.log("J total length = " + input.length);
             input.forEach(function (item) {
                 db.collection('data').insert(item, function (err) {
                     if (err) {
                         reject(err);
                     } else {
-                    j++;S
+                        j++;
+                    console.log("J = " + j);
                     }
                 });
                 if (j >= input.length) {
