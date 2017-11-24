@@ -30,6 +30,8 @@ MongoClient.connect(dbURL, function (error, db) {
         db.close;
     })
 });
+
+console.log("Current index is " + index);
 /*
 app.use(express.static("./client"));
 app.use(bodyParser.json());
@@ -102,13 +104,6 @@ function parseBittrex(input) {
             if (error) {
                 reject(err);
             }
-            /*db.collection('data').findOne({"tracer": "HHHHH"}, function (err, resss) {
-                if (err) {
-                    throw err;
-                }
-                index = resss.index;
-                console.log(index);
-            }); */
             output.forEach(function (item) {
                 db.collection('data').findOne({"symbol": item.MarketName}, function (err, result) {
                     if (err) {
