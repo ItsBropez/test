@@ -46,7 +46,7 @@ bittrex.options({
 
 function getMarketCap() {
     return new Promise(function (resolve, reject) {
-        https.get('https://api.coinmarketcap.com/v1/ticker/?limit=2000', function (res) {
+        https.get('https://api.coinmarketcap.com/v1/ticker/?limit=2500', function (res) {
             var body = '';
             res.on('data', function (d) {
                 body += d;
@@ -64,15 +64,19 @@ function logMarketCap(input) {
             if (error) {
 		        reject(err);
             }
+            var i = 0;
             input.forEach(function (item) {
                 db.collection('data').insert(item, function (err) {
                     if (err) {
                         reject(err);
                     }
+                    i++;
                 });
+                if (i >= input.length) {
+                    db.close();
+                    resolve();
+                }
             });
-            db.close();
-            resolve();
         });
     });
 }
@@ -138,16 +142,20 @@ function logBittrex(input) {
             if (error) {
 		        reject(err);
             }
+            var j = 0;
             input.forEach(function (item) {
                 db.collection('data').insert(item, function (err) {
                     if (err) {
                         reject(err);
                     }
+                    j++;
                 });
+                if (j >= input.length) {
+                    db.collection('data').updateOne({"Tracer" : "HHHHH"}, {"Tracer": "HHHHH", "index" : index});
+                    db.close();
+                    resolve();
+                }
             });
-            db.collection('data').updateOne({"Tracer" : "HHHHH"}, {"Tracer": "HHHHH", "index" : index});
-            db.close();
-            resolve();
         });
     });
 }
