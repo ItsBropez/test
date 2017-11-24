@@ -75,7 +75,7 @@ function logMarketCap(input) {
                     console.log("i = " + i);
                     }
                 });
-                if (i >= input.length) {
+                if (i == input.length) {
                     db.close();
                     resolve();
                     console.log("Complete MCAP Log");
@@ -130,7 +130,7 @@ function parseBittrex(input) {
                     }
                     count++;
                     console.log("count = " + count);
-                    if (count >= output.length) {
+                    if (count == output.length) {
                         resolve(output);
                         console.log("Last index used " + index);
                         index++;
@@ -160,7 +160,7 @@ function logBittrex(input) {
                     console.log("J = " + j);
                     }
                 });
-                if (j >= input.length) {
+                if (j == input.length) {
                     db.collection('data').updateOne({"Tracer" : "HHHHH"}, {"Tracer": "HHHHH", "index" : index});
                     db.close();
                     resolve();
