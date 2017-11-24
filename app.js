@@ -69,8 +69,9 @@ function logMarketCap(input) {
                 db.collection('data').insert(item, function (err) {
                     if (err) {
                         reject(err);
-                    }
+                    } else {
                     i++;
+                    }
                 });
                 if (i >= input.length) {
                     db.close();
@@ -147,8 +148,9 @@ function logBittrex(input) {
                 db.collection('data').insert(item, function (err) {
                     if (err) {
                         reject(err);
+                    } else {
+                    j++;S
                     }
-                    j++;
                 });
                 if (j >= input.length) {
                     db.collection('data').updateOne({"Tracer" : "HHHHH"}, {"Tracer": "HHHHH", "index" : index});
