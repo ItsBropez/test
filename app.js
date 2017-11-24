@@ -65,7 +65,6 @@ function logMarketCap(input) {
 		        reject(err);
             }
             var i = 0;
-            console.log("MCAP Length = " + input.length);
             input.forEach(function (item) {
                 db.collection('data').insert(item, function (err) {
                     if (err) {
@@ -112,7 +111,6 @@ function parseBittrex(input) {
             if (error) {
                 reject(err);
             }
-            console.log("Bittrex Length = " + output.length);
             output.forEach(function (item) {
                 db.collection('data').findOne({"symbol": item.MarketName}, function (err, result) {
                     if (err) {
@@ -148,7 +146,6 @@ function logBittrex(input) {
 		        reject(err);
             }
             var j = 0;
-            console.log("J total length = " + input.length);
             input.forEach(function (item) {
                 db.collection('data').insert(item, function (err) {
                     if (err) {
