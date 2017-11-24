@@ -28,10 +28,10 @@ MongoClient.connect(dbURL, function (error, db) {
         }
         index = mindex.index;
         db.close;
+        console.log("Current index is " + index);
     })
 });
 
-console.log("Current index is " + index);
 /*
 app.use(express.static("./client"));
 app.use(bodyParser.json());
