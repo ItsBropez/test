@@ -109,7 +109,7 @@ function parseBittrex(input) {
                     if (err) {
                         console.log(item.MarketName);
                     } else if (result === null) {
-
+                        console.log(item.MarketName);
                     } else {
                         item.Gap = item.OpenSellOrders - item.OpenBuyOrders;
                         item.mID = result.id;
