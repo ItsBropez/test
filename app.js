@@ -171,7 +171,7 @@ function runner() {
         .then(getBittrex)
         .then(parseBittrex)
         .then(logBittrex)
-        .then(clearMarketCap);
+        //.then(clearMarketCap);
 }
 
 setInterval(function () {
